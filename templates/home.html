@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .gfg {
+    background-color: rgb(211, 211, 211);
+    border: 3px solid black;
+    color: rgb(24, 19, 46);
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 15px;
+    margin: 10px 30px;
+    }
+    .btn {
+      background-color: black;
+      border: 2px solid black;
+      color: rgb(248, 238, 238);
+      padding: 8px 12px;
+      text-align: left;
+      display: inline-block;
+      font-size: 15px;
+      margin: 15px 30px;
+      }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictor</title>
+</head>
+<body>
+<div>
+<form class="gfg" action="{{ url_for('predict')}}"method="post">
+  Age <br> <input type="text" name="Age" placeholder="Age" required="required" /> <br><hr>
+    
+    <input type="radio" id="Male" name="Sex" value="1" />
+      <label for="Male">MALE</label>
+    <input type="radio" id="Female" name="Sex" value="0" />
+      <label for="Female">FEMALE</label><br><hr>
+  CHEST PAIN TYPE :  
+    <br><input type="radio" id="TA" name="ChestPain" value="3" />
+      <label for="TA">Typical Angina</label>
+      <input type="radio" id="ATA" name="ChestPain" value="2" />
+      <label for="ATA">ATypical Angina</label>
+      <br><input type="radio" id="NAP" name="ChestPain" value="1" />
+      <label for="NAP">Non-Anginal Pain</label>
+      <input type="radio" id="ASY" name="ChestPain" value="0" />
+      <label for="ASY">Asymptomatic</label><br>
+      <hr>
+  Blood Pressure<br><input type="text" name="BP" placeholder="BP" required="required" /><br><hr>
+  Cholesterol<br><input type="text" name="Chol" placeholder="Cholesterol" required="required" /><br><hr>
+  Blood Sugar<br> <input type="radio" id="yes" name="bs" value="1" />
+  <label for="yes">Yes</label>
+  <input type="radio" id="no" name="bs" value="0" />
+  <label for="no">No</label><br><hr>
+  ECG Results : <br><input type="radio" id="nrm" name="ECG" value="0" />
+  <label for="nrm">Normal</label>
+  <input type="radio" id="ED" name="ECG" value="2" />
+  <label for="ED">Elevated/Depressed</label>
+  <input type="radio" id="abnrm" name="ECG" value="1" />
+  <label for="abnrm">Abnormal</label>
+  <hr>
+  Max HeartRate<br>  <input type="text" name="maxhr" placeholder="Heart Rate" required="required" /><br><hr>
+
+  Chest Pain during Exercise :<br>  <input type="radio" id="yes" name="cpe" value="1" />
+                                  <label for="yes">Yes</label>
+                                  <input type="radio" id="no" name="cpe" value="0" />
+                                  <label for="no">No</label><br><hr>
+Oldpeak: ST depression induced by exercise relative to rest<br>  <input type="text" name="oldp" placeholder="Old peak" required="required" /><br><hr>
+Slope: the slope of the peak exercise ST segment :
+<br>  <input type="radio" id="unslp" name="Slope" value="1" />
+<label for="unslp">Unsloping</label>
+<input type="radio" id="flat" name="Slope" value="0" />
+<label for="flat">Flat</label>
+<input type="radio" id="dwnslp" name="Slope" value="2" />
+<label for="dwnslp">DownSlope</label><br><hr>
+<button type="submit" class="btn">Diagnose</button><hr>
+</form>
+<br>
+<br>
+</div>
+<hr>
+<br><br>
+{{prediction_text}}
+<br>
+<br><br>
+<hr>
+</body>
+</html>
