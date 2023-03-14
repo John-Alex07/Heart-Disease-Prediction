@@ -1,88 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    .gfg {
-    background-color: rgb(211, 211, 211);
-    border: 3px solid black;
-    color: rgb(24, 19, 46);
-    padding: 5px 10px;
-    text-align: center;
-    display: inline-block;
-    font-size: 15px;
-    margin: 10px 30px;
-    }
-    .btn {
-      background-color: black;
-      border: 2px solid black;
-      color: rgb(248, 238, 238);
-      padding: 8px 12px;
-      text-align: left;
-      display: inline-block;
-      font-size: 15px;
-      margin: 15px 30px;
-      }
-</style>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Predictor</title>
-</head>
-<body>
-<div>
-<form class="gfg" action="{{ url_for('predict')}}"method="post">
-  Age <br> <input type="text" name="Age" placeholder="Age" required="required" /> <br><hr>
-    
-    <input type="radio" id="Male" name="Sex" value="1" />
-      <label for="Male">MALE</label>
-    <input type="radio" id="Female" name="Sex" value="0" />
-      <label for="Female">FEMALE</label><br><hr>
-  CHEST PAIN TYPE :  
-    <br><input type="radio" id="TA" name="ChestPain" value="3" />
-      <label for="TA">Typical Angina</label>
-      <input type="radio" id="ATA" name="ChestPain" value="2" />
-      <label for="ATA">ATypical Angina</label>
-      <br><input type="radio" id="NAP" name="ChestPain" value="1" />
-      <label for="NAP">Non-Anginal Pain</label>
-      <input type="radio" id="ASY" name="ChestPain" value="0" />
-      <label for="ASY">Asymptomatic</label><br>
-      <hr>
-  Blood Pressure<br><input type="text" name="BP" placeholder="BP" required="required" /><br><hr>
-  Cholesterol<br><input type="text" name="Chol" placeholder="Cholesterol" required="required" /><br><hr>
-  Blood Sugar<br> <input type="radio" id="yes" name="bs" value="1" />
-  <label for="yes">Yes</label>
-  <input type="radio" id="no" name="bs" value="0" />
-  <label for="no">No</label><br><hr>
-  ECG Results : <br><input type="radio" id="nrm" name="ECG" value="0" />
-  <label for="nrm">Normal</label>
-  <input type="radio" id="ED" name="ECG" value="2" />
-  <label for="ED">Elevated/Depressed</label>
-  <input type="radio" id="abnrm" name="ECG" value="1" />
-  <label for="abnrm">Abnormal</label>
-  <hr>
-  Max HeartRate<br>  <input type="text" name="maxhr" placeholder="Heart Rate" required="required" /><br><hr>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  </head>
+  
+  <body>
+    <div class="form-container">
+      <form class="gfg" action="{{ url_for('predict')}}" method="post">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="Age" required>
+        <br>
+        <br>
+        <label>Sex:</label>
+        <input type="radio" id="male" name="Sex" value="1" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="Sex" value="0" required>
+        <label for="female">Female</label>
+        <br>
+        <br>
+        <label for="chest_pain_type">Chest Pain Type:</label>
+        <select id="chest_pain_type" name="ChestPain" required>
+          <option value="">Choose an option</option>
+          <option value="3">Typical Angina</option>
+          <option value="2">Atypical Angina</option>
+          <option value="1">Non-Anginal Pain</option>
+          <option value="0">Asymptomatic</option>
+        </select>
 
-  Chest Pain during Exercise :<br>  <input type="radio" id="yes" name="cpe" value="1" />
-                                  <label for="yes">Yes</label>
-                                  <input type="radio" id="no" name="cpe" value="0" />
-                                  <label for="no">No</label><br><hr>
-Oldpeak: ST depression induced by exercise relative to rest<br>  <input type="text" name="oldp" placeholder="Old peak" required="required" /><br><hr>
-Slope: the slope of the peak exercise ST segment :
-<br>  <input type="radio" id="unslp" name="Slope" value="1" />
-<label for="unslp">Unsloping</label>
-<input type="radio" id="flat" name="Slope" value="0" />
-<label for="flat">Flat</label>
-<input type="radio" id="dwnslp" name="Slope" value="2" />
-<label for="dwnslp">DownSlope</label><br><hr>
-<button type="submit" class="btn">Diagnose</button><hr>
-</form>
-<br>
-<br>
-</div>
-<hr>
-<br><br>
-{{prediction_text}}
-<br>
-<br><br>
-<hr>
+        <label for="blood_pressure">Blood Pressure:</label>
+        <input type="text" id="blood_pressure" name="BP" required>
+
+        <label for="cholesterol">Cholesterol:</label>
+        <input type="text" id="cholesterol" name="Chol" required>
+        <br>
+        <br>
+        <label>Blood Sugar:</label>
+        <input type="radio" id="yes" name="bs" value="1">
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" name="bs" value="0">
+        <label for="no">No</label>
+        <br>
+        <br>
+        <label for="ecg_results">ECG Results:</label>
+        <select id="ecg_results" name="ECG" required>
+          <option value="">Choose an option</option>
+          <option value="0">Normal</option>
+          <option value="2">Elevated/Depressed</option>
+          <option value="1">Abnormal</option>
+        </select>
+
+        <label for="max_heart_rate">Max Heart Rate:</label>
+        <input type="text" id="max_heart_rate" name="maxhr" required>
+        <br><br>
+        <label>Chest Pain During Exercise:</label>
+        <br>
+        <input type="radio" id="yes" name="cpe" value="1">
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" name="cpe" value="0">
+        <label for="no">No</label>
+        <br>
+        <br>
+        <label for="old_peak">Old Peak:</label>
+        <input type="text" id="old_peak" name="oldp" required>
+
+        <label for="slope">Slope:</label>
+        <select id="slope" name="Slope" required>
+          <option value="">Choose an option</option>
+          <option value="1">Unsloping</option>
+          <option value="0">Flat</option>
+          <option value="2">DownSlope</option>
+        </select>
+
+        <button type="submit" class="btn">Diagnose</button>
+    </form>
+  </div>
+  <br><br>
+  <p class="prediction" {% if not active %}style="display:none;"{% endif %}>
+    {% if active == "clicked" %}
+      {% if prediction_text == "Positive" %}
+        <span class="positive">You may have a higher risk of heart disease. Please consult with your doctor for further evaluation.</span>
+      {% else %}
+        <span class="negative">Great news! You may have a lower risk of heart disease. Keep up the good work!</span>
+      {% endif %}
+    {% endif %}
+  </p>  
+  
+  <br>
+  <br><br>
 </body>
+
 </html>
