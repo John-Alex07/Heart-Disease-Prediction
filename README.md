@@ -40,3 +40,15 @@ This repository contains a comprehensive Heart Disease Prediction system that le
 3. Run the application
    ```bash
    run App.py
+4. Open the app
+   Open your browser and go to http://localhost:5000 to use the Heart Disease Prediction system.
+
+## Result
+   # Confusion Matrix for the final model with the considered features
+   ![Confusion Matrix](https://github.com/John-Alex07/Heart-Disease-Prediction/blob/master/Confusion%20Matrix.png)
+
+   # Final Perfomance Metric Values of the Explored Models
+   ![Perfomance Metric Values](https://github.com/John-Alex07/Heart-Disease-Prediction/blob/master/Result.png)
+
+   # Conclusion
+   By comparing different machine learning models based on accuracy score, it is found that **LGBM** classifier works best for this dataset.
