@@ -51,4 +51,4 @@ This repository contains a comprehensive Heart Disease Prediction system that le
    ![Perfomance Metric Values](https://github.com/John-Alex07/Heart-Disease-Prediction/blob/master/Result.png)
 
    # Conclusion
-   By comparing different machine learning models based on accuracy score, it is found that **LGBM** classifier works best for this dataset.
+   By comparing different machine learning models based on accuracy score, it is found that **Random Forest** classifier works best for this dataset.
