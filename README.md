@@ -44,7 +44,7 @@ This repository contains a comprehensive Heart Disease Prediction system that le
    Open your browser and go to http://localhost:5000 to use the Heart Disease Prediction system.
 
 ## Result
-   # Confusion Matrix for the final model with the considered features
+   # Correlation Matrix of the final considered features
    ![Confusion Matrix](https://github.com/John-Alex07/Heart-Disease-Prediction/blob/master/Confusion%20Matrix.png)
 
    # Final Perfomance Metric Values of the Explored Models
